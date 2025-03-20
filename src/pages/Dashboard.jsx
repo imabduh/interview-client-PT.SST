@@ -1,25 +1,29 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { apiContext } from "../services/apis";
 
 const Dashboard = () => {
   const { setToken, services, fetchServices, myId, userData, getUserId } =
     useContext(apiContext);
+    const [loading, setLoading] = useState(true);
 
   const navigate = useNavigate();
 
   useEffect(() => {
     fetchServices();
     getUserId(myId);
+    setLoading(false);
+
   }, [myId]);
+
+  if (loading) return <div className="flex items-center justify-center h-screen">Tunggu Sebentar...</div>;
+
 
   return (
     <div>
       <div className="fixed bottom-0 flex justify-between gap-3 w-full p-1 text-white bg-cyan-500 px-3">
         <div className="flex gap-3">
-          <b>{userData.name}</b>
-          -
-          <p>{userData.role}</p>
+          <b>{userData.name}</b>-<p>{userData.role}</p>
         </div>
 
         <button
@@ -63,6 +67,7 @@ const Dashboard = () => {
                   className="rounded-lg mb-1.5"
                   src="https://static.vecteezy.com/system/resources/previews/000/551/891/original/vector-illustration-of-modern-house.jpg"
                   alt="img"
+                  loading="lazy"
                 />
                 <p className="truncate block font-bold text-cyan-500">
                   {service.name.toUpperCase()}
@@ -71,7 +76,7 @@ const Dashboard = () => {
                   Rp.{service.price.toLocaleString("id-ID")}
                 </p>
                 <p className="truncate block text-xs font-semibold">
-                  {service.userProvider[0].name}asdf
+                  {service.userProvider[0].name}
                 </p>
                 <p className="truncate block text-xs text-gray-500">
                   {service.userProvider[0].address}

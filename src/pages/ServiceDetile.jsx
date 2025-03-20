@@ -46,6 +46,7 @@ export default function ServiceDetile() {
     deleteManyOrderByServiceId(id);
     navigate("/");
   };
+
   return (
     <div>
       {serviceData.userProvider ? (
@@ -111,7 +112,9 @@ export default function ServiceDetile() {
           </div>
         </div>
       ) : (
-        "loading"
+        <div className="w-full h-screen flex justify-center items-center text-center">
+          Tunggu Sebenter
+        </div>
       )}
     </div>
   );

@@ -24,7 +24,7 @@ export default function ApiProvider({ children }) {
   if (token) myId = jwtDecode(token).id;
 
   const API = axios.create({
-    baseURL: "http://localhost:3001/api",
+    baseURL: "https://interview-server-pt-sst.vercel.app/api",
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,

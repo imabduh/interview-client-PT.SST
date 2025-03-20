@@ -52,6 +52,10 @@ const Login = () => {
       <Link className="text-gray-500" to={"/register"}>
         Belom punya akun?
       </Link>
+      <div className="text-center fixed bottom-5">
+      <p className="text-gray-500 text-xs font-bold">Muhammad Abduh</p>
+      <p className="text-gray-500 text-xs">PT. Sedayu Sehat Tekhnologi</p>
+      </div>
     </div>
   );
 };

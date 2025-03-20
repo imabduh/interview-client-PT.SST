@@ -25,7 +25,6 @@ export default function Orders() {
           </button>
         </Link>
       </div>
-
       <div className="grid gap-3 sm:grid-cols-3">
         {orders.map((order) =>
           order.buyerId === myId ||
@@ -58,35 +57,41 @@ export default function Orders() {
               </p>
               <p>
                 Tanggal ditinggali:{" "}
-                <b className="text-cyan-500">{new Date(order.appointmentDate).toLocaleDateString('id-ID')}</b>
+                <b className="text-cyan-500">
+                  {new Date(order.appointmentDate).toLocaleDateString("id-ID")}
+                </b>
               </p>
               <p>
                 Tanggal Pemesanan:{" "}
-                <b className="text-cyan-500">{new Date(order.createdAt).toLocaleDateString('id-ID')}</b>
+                <b className="text-cyan-500">
+                  {new Date(order.createdAt).toLocaleDateString("id-ID")}
+                </b>
               </p>
               <p>
                 Waktu Pemesanan:{" "}
-                <b className="text-cyan-500">{new Date(order.createdAt).toLocaleTimeString('id-ID')}</b>
+                <b className="text-cyan-500">
+                  {new Date(order.createdAt).toLocaleTimeString("id-ID")}
+                </b>
               </p>
               <p>
                 {userData.role === "provider" ? (
                   <p>
                     Ubah Status:{" "}
-                  <select
-                    disabled={false}
-                    className="border rounded-full px-1"
-                    value={order.status}
-                    onChange={(e) => {
-                      handleUpdateOrderStatus(order._id, e.target.value);
-                    }}
-                  >
-                    <option value="Menunggu Konfirmasi">
-                      Menunggu Konfirmasi
-                    </option>
-                    <option value="Sedang Diproses">Sedang Diproses</option>
-                    <option value="Selesai">Selesai</option>
-                    <option value="Dibatalkan">Dibatalkan</option>
-                  </select>
+                    <select
+                      disabled={false}
+                      className="border rounded-full px-1"
+                      value={order.status}
+                      onChange={(e) => {
+                        handleUpdateOrderStatus(order._id, e.target.value);
+                      }}
+                    >
+                      <option value="Menunggu Konfirmasi">
+                        Menunggu Konfirmasi
+                      </option>
+                      <option value="Sedang Diproses">Sedang Diproses</option>
+                      <option value="Selesai">Selesai</option>
+                      <option value="Dibatalkan">Dibatalkan</option>
+                    </select>
                   </p>
                 ) : null}
               </p>
@@ -114,7 +119,11 @@ export default function Orders() {
                 </p>
               ) : null}
             </div>
-          ) : null
+          ) : (
+            <div className="w-full h-screen flex justify-center items-center text-center">
+              Tunggu Sebenter
+            </div>
+          )
         )}
       </div>
     </div>
