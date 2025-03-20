@@ -5,15 +5,24 @@ import { Link } from "react-router-dom";
 export default function Orders() {
   const { updateOrderStatus, fetchOrders, orders, getUserId, userData, myId } =
     useContext(apiContext);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetchOrders();
     getUserId(myId);
+    setLoading(false);
   }, []);
 
   const handleUpdateOrderStatus = async (id, status) => {
     updateOrderStatus(id, status);
   };
+
+  if (loading)
+    return (
+      <div className="flex items-center justify-center h-screen">
+        Tunggu Sebentar
+      </div>
+    );
 
   return (
     <div className="container mx-auto flex flex-col p-3">
