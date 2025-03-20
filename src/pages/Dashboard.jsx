@@ -16,7 +16,7 @@ const Dashboard = () => {
 
   }, [myId]);
 
-  if (loading) return <div className="flex items-center justify-center h-screen">Tunggu Sebentar...</div>;
+  if (loading) return <div className="flex items-center justify-center h-screen">Tunggu Sebentar</div>;
 
 
   return (
