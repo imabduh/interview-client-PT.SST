@@ -119,11 +119,7 @@ export default function Orders() {
                 </p>
               ) : null}
             </div>
-          ) : (
-            <div className="w-full h-screen flex justify-center items-center text-center">
-              Tunggu Sebenter
-            </div>
-          )
+          ) : null
         )}
       </div>
     </div>
